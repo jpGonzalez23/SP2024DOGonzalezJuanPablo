@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <title>Simulacro Segundo Parcial</title>
+</head>
+
+<body>
+    <section id="form-datos">
+        <h1>Listado de Vehiculos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-id">ID</th>
+                    <th class="col-modelo">Modelo</th>
+                    <th class="col-anoFabricacion">Año Fabricación</th>
+                    <th class="col-velMax">Velocidad Maxima</th>
+                    <th class="col-cantidadPuertas">Cantidad de puertas</th>
+                    <th class="col-asientos">Asientos</th>
+                    <th class="col-carga">Carga</th>
+                    <th class="col-autonomia">Autonomia</th>
+                    <th class="col-modificar">Modificar</th>
+                    <th class="col-eliminar">Eliminar</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody-vehiculos">
+                <!-- Las filas se agregarán dinámicamente aquí -->
+            </tbody>
+        </table>
+
+        <button onclick="mostrarFormularioABM()">Agregar</button>
+    </section>
+
+    <section id="form-abm" style="display: none;">
+        <h2 id="accion-titulo">Formulario de Alta</h2>
+
+        <form id="abm-form">
+            <div class="input-group">
+                <label for="txtModelo">Modelo</label>
+                <input type="text" name="txtModelo" id="txtModelo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="numAnoFabricacion">Año Fabricación</label>
+                <input type="text" name="numAnoFabricacion" id="numAnoFabricacion" required>
+            </div>
+
+            <div class="input-group">
+                <label for="numVelMax">Velocidad Maxima</label>
+                <input type="number" name="numVelMax" id="numVelMax" required>
+            </div>
+
+            <div class="input-group">
+                <label for="numCantidadPuertas">Cantidad de puertas</label>
+                <input type="number" name="numCantidadPuertas" id="numCantidadPuertas">
+            </div>
+
+            <div class="input-group">
+                <label for="numAsientos">Asientos</label>
+                <input type="number" name="numAsientos" id="numAsientos">
+            </div>
+
+            <div class="input-group">
+                <label for="numCarga">Carga</label>
+                <input type="number" name="numCarga" id="numCarga">
+            </div>
+
+            <div class="input-group">
+                <label for="numAutonomia">Autonomia</label>
+                <input type="number" name="numAutonomia" id="numAutonomia">
+            </div>
+
+            <button type="button" onclick="alta()">Aceptar</button>
+            <button type="button" onclick="cancelar()">Cancelar</button>
+        </form>
+    </section>
+
+    <div id="spinner" style="display: none;">Cargando...</div>
+
+    <script type="module" src="./src/app.js"></script>
+</body>
+
+</html>
