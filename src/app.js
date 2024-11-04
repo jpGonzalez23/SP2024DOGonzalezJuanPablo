@@ -208,7 +208,68 @@ window.realizarModificacion = function () {
 }
 
 window.eliminar = function (id) {
-    
+    currentVehiculo = vehiculos.find(v => v.id === id);
+
+    if(currentVehiculo) {
+        document.getElementById('accion-titulo').innerHTML = 'Formulario de Eliminación';	
+        
+        document.getElementById("txtModelo").value = currentVehiculo.modelo;
+        document.getElementById("numAnoFabricacion").value = currentVehiculo.anoFabricacion;
+        document.getElementById("numVelMax").value = currentVehiculo.velMax;
+        document.getElementById("numCantidadPuertas").value = currentVehiculo.cantidadPuertas || '';
+        document.getElementById("numAsientos").value = currentVehiculo.asientos || '';
+        document.getElementById("numCarga").value = currentVehiculo.carga || '';
+        document.getElementById("numAutonomia").value = currentVehiculo.autonomia || '';
+
+        const idInput = document.getElementById("txtId");
+        if(idInput) {
+            idInput.value = currentVehiculo.id;
+            idInput.disabled = true;
+        }
+        else {
+            console.error('No se encontro el elemento con id "txtId"');
+        }
+
+        document.getElementById("form-datos").style.display = "none";
+        document.getElementById("form-abm").style.display = "block";
+        document.getElementById('spinner').style.display = 'none';
+    }
+    else {
+        alert("No se encontro el vehiculo");
+    }
+}
+
+window.confirmarEliminacion = function () {
+    const id = currentVehiculo.id;
+
+    fetch(`https://examenesutn.vercel.app/api/VehiculoAutoCamion/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if(response.status === 200) {
+            vehiculos = vehiculos.filter(v => v.id !== id);
+            mostrarLista();
+
+            document.getElementById("form-datos").style.display = 'none';
+            document.getElementById("form-abm").style.display = 'block';
+        }
+        else {
+            throw new Error("Error en la solicitud de eliminación");
+        }
+    })
+    .catch(error => {
+        alert('no se pudo realizar la operacion de eliminación' + error.message);
+        document.getElementById("form-datos").style.display = 'none';
+        document.getElementById("form-abm").style.display = 'block';
+        document.getElementById('spinner').style.display = 'none';
+    })
+    .finally(() => {
+        document.getElementById('form-abm').style.display = 'none';
+        document.getElementById('form-datos').style.display = 'block';
+    })
 }
 
 window.onload = function () {
