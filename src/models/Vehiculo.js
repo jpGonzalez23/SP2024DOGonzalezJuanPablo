@@ -1,4 +1,9 @@
 export class Vehiculo {
+
+    id;
+    modelo;
+    anoFabricacion;
+    velMax;
     constructor(id, modelo, anoFabricacion, velMax) {
         this.id = id;
         this.modelo = modelo;

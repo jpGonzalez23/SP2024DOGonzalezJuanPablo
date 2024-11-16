@@ -1,7 +1,8 @@
 import { Vehiculo } from "./Vehiculo.js";
 
 export class Auto extends Vehiculo {
-
+    carga;
+    autonomia;
     constructor(id, modelo, anoFabricacion, velMax, cantidadPuertas, asiestos) {
         super(id, modelo, anoFabricacion, velMax);
         this.cantidadPuertas = cantidadPuertas;
