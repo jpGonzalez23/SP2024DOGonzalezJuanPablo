@@ -38,7 +38,7 @@
 
     <section id="form-abm" style="display: none;">
         <h2 id="accion-titulo">Formulario de Alta:</h2>
-        <input type="text" id="txtId" disabled>
+
         <div class="input-group">
             <label for="selectTipo">Tipo:</label>
             <select name="selectTipo" id="selectTipo">
@@ -48,18 +48,23 @@
         </div>
 
         <div class="input-group">
+            <label for="txtId">ID:</label>
+            <input type="text" name="txtId" id="txtId" disabled>
+        </div>
+
+        <div class="input-group">
             <label for="txtModelo">Modelo:</label>
-            <input type="text" name="txtModelo" id="txtModelo" required>
+            <input type="text" name="txtModelo" id="txtModelo">
         </div>
 
         <div class="input-group">
             <label for="numAnoFabricacion">Año Fabricación:</label>
-            <input type="text" name="numAnoFabricacion" id="numAnoFabricacion" required>
+            <input type="text" name="numAnoFabricacion" id="numAnoFabricacion">
         </div>
 
         <div class="input-group">
             <label for="numVelMax">Velocidad Maxima:</label>
-            <input type="number" name="numVelMax" id="numVelMax" required>
+            <input type="number" name="numVelMax" id="numVelMax">
         </div>
 
         <div class="input-group">
